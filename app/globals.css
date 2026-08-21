@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Brand purple, sampled from the Hands-On Innovations logo (#260949) */
+  --brand-950: #0f031d;
+  --brand-900: #1c0736;
+  --brand-800: #260949;
+  --brand-700: #341262;
+  --brand-600: #45197f;
+  --brand-500: #5c22a6;
+  --brand-400: #7e3fd1;
+  --brand-300: #a878e6;
+  --brand-200: #d3bdf5;
+  --brand-100: #ede2fb;
+  --brand-50: #f7f2fd;
+
+  /* Warm accent for CTAs/highlights, echoing the product photography */
+  --accent-600: #b8790f;
+  --accent-500: #e0a429;
+  --accent-400: #f0bb4f;
+  --accent-300: #f6d489;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "SFMono-Regular", ui-monospace, monospace;
+
+  --color-brand-950: var(--brand-950);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-700: var(--brand-700);
+  --color-brand-600: var(--brand-600);
+  --color-brand-500: var(--brand-500);
+  --color-brand-400: var(--brand-400);
+  --color-brand-300: var(--brand-300);
+  --color-brand-200: var(--brand-200);
+  --color-brand-100: var(--brand-100);
+  --color-brand-50: var(--brand-50);
+
+  --color-accent-600: var(--accent-600);
+  --color-accent-500: var(--accent-500);
+  --color-accent-400: var(--accent-400);
+  --color-accent-300: var(--accent-300);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
