@@ -1,7 +1,21 @@
 import type { Metadata } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/content";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 const title = "Smart Digital Signage Displays in UAE | Hands-On Innovations";
 const description =
@@ -77,8 +91,8 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-white text-brand-950">
+    <html lang="en" className={`h-full antialiased ${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="min-h-full flex flex-col bg-brand-950 text-white">
         <Script
           id="organization-jsonld"
           type="application/ld+json"

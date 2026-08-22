@@ -17,12 +17,14 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const industries = [
-  { label: "Restaurants & Cafés", emoji: "🍽️" },
-  { label: "Retail Stores", emoji: "🛍️" },
-  { label: "Hotels", emoji: "🏨" },
-  { label: "Offices", emoji: "🏢" },
-  { label: "Salons & Spas", emoji: "💈" },
+export type IndustryIcon = "restaurant" | "retail" | "hotel" | "office" | "salon";
+
+export const industries: { label: string; icon: IndustryIcon }[] = [
+  { label: "Restaurants & Cafés", icon: "restaurant" },
+  { label: "Retail Stores", icon: "retail" },
+  { label: "Hotels", icon: "hotel" },
+  { label: "Offices", icon: "office" },
+  { label: "Salons & Spas", icon: "salon" },
 ];
 
 export const screenSizes = [
@@ -87,39 +89,51 @@ export const products: Product[] = [
   },
 ];
 
-export const cmsFeatures = [
+export type CmsFeatureIcon = "multidevice" | "schedule" | "remote" | "groups";
+
+export const cmsFeatures: { icon: CmsFeatureIcon; title: string; description: string }[] = [
   {
+    icon: "multidevice",
     title: "Multi-Device Management",
     description: "See every screen across every location from a single dashboard, with live online/offline status.",
   },
   {
+    icon: "schedule",
     title: "Playlists & Scheduling",
     description: "Build content playlists and schedule what plays, where, and when — down to the day and hour.",
   },
   {
+    icon: "remote",
     title: "Remote Control, Anywhere",
     description: "Push new content, restart a screen, or swap a promotion instantly, without visiting the site.",
   },
   {
+    icon: "groups",
     title: "Groups & User Access",
     description: "Organize displays into groups and give staff the right level of access to manage them.",
   },
 ];
 
-export const whyUs = [
+export type WhyUsIcon = "plug" | "sizes" | "pin" | "toggle";
+
+export const whyUs: { icon: WhyUsIcon; title: string; description: string }[] = [
   {
+    icon: "plug",
     title: "Plug-and-Play Setup",
     description: "Your display arrives ready to go — power it on, connect to Wi-Fi, and start showing content.",
   },
   {
+    icon: "sizes",
     title: "Every Size, One Supplier",
     description: "From 32\" countertop screens to 95\" floor stands, we outfit an entire location from one source.",
   },
   {
+    icon: "pin",
     title: "UAE-Based Support",
     description: "Local sales, installation guidance, and support — no waiting on overseas time zones.",
   },
   {
+    icon: "toggle",
     title: "CMS Is Optional, Not Forced",
     description: "Run a display standalone, or add our Cloud CMS when you need remote, multi-screen control.",
   },

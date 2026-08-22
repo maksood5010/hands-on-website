@@ -41,17 +41,21 @@ export default function ContactForm() {
     }
   }
 
+  const fieldClass =
+    "mt-1.5 w-full rounded-xl border border-white/14 bg-white/5 px-3.5 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/35 focus:border-accent-400 focus:ring-1 focus:ring-accent-400";
+  const labelClass = "font-sans text-sm font-semibold text-white/75";
+
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-brand-200 bg-white p-8 text-center">
-        <p className="text-lg font-semibold text-brand-950">Thank you — request received!</p>
-        <p className="mt-2 text-sm text-brand-900/70">
+      <div className="animate-fade-right rounded-3xl border border-white/12 bg-gradient-to-b from-white/5.5 to-white/2 p-8 text-center">
+        <p className="font-display text-lg font-semibold text-white">Thank you — request received!</p>
+        <p className="mt-2 text-sm text-white/65">
           Our team will get back to you shortly. In the meantime, feel free to call or WhatsApp us.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-brand-700 underline underline-offset-4"
+          className="mt-6 font-sans text-sm font-semibold text-accent-300 underline underline-offset-4"
         >
           Send another request
         </button>
@@ -60,80 +64,56 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-brand-200 bg-white p-6 sm:p-8">
+    <form
+      onSubmit={handleSubmit}
+      className="animate-fade-right rounded-3xl border border-white/12 bg-gradient-to-b from-white/5.5 to-white/2 p-6 sm:p-8"
+      style={{ animationDelay: "120ms" }}
+    >
       {/* Honeypot field, hidden from real users */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="text-sm font-medium text-brand-900">
+          <label htmlFor="name" className={labelClass}>
             Full Name
           </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-          />
+          <input id="name" name="name" type="text" required className={fieldClass} />
         </div>
 
         <div>
-          <label htmlFor="company" className="text-sm font-medium text-brand-900">
+          <label htmlFor="company" className={labelClass}>
             Company
           </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-          />
+          <input id="company" name="company" type="text" className={fieldClass} />
         </div>
 
         <div>
-          <label htmlFor="email" className="text-sm font-medium text-brand-900">
+          <label htmlFor="email" className={labelClass}>
             Email
           </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-          />
+          <input id="email" name="email" type="email" required className={fieldClass} />
         </div>
 
         <div>
-          <label htmlFor="phone" className="text-sm font-medium text-brand-900">
+          <label htmlFor="phone" className={labelClass}>
             Phone
           </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-          />
+          <input id="phone" name="phone" type="tel" required className={fieldClass} />
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="businessType" className="text-sm font-medium text-brand-900">
+          <label htmlFor="businessType" className={labelClass}>
             Business Type
           </label>
-          <select
-            id="businessType"
-            name="businessType"
-            defaultValue=""
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-          >
-            <option value="" disabled>
+          <select id="businessType" name="businessType" defaultValue="" className={fieldClass}>
+            <option value="" disabled className="bg-brand-900 text-white">
               Select one
             </option>
             {businessTypes.map((type) => (
-              <option key={type} value={type}>
+              <option key={type} value={type} className="bg-brand-900 text-white">
                 {type}
               </option>
             ))}
@@ -141,7 +121,7 @@ export default function ContactForm() {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="message" className="text-sm font-medium text-brand-900">
+          <label htmlFor="message" className={labelClass}>
             Message
           </label>
           <textarea
@@ -150,21 +130,23 @@ export default function ContactForm() {
             rows={4}
             required
             placeholder="Tell us about your space and what you'd like to display..."
-            className="mt-1.5 w-full rounded-lg border border-brand-200 px-3.5 py-2.5 text-sm text-brand-950 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
+            className={fieldClass}
           />
         </div>
       </div>
 
       {status === "error" && (
-        <p className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">{errorMessage}</p>
+        <p className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          {errorMessage}
+        </p>
       )}
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-6 w-full rounded-full bg-brand-800 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn-shine mt-6 w-full rounded-full bg-accent-500 px-6 py-3.5 font-sans text-sm font-bold text-brand-950 transition-opacity disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending..." : "Request a Demo"}
+        <span>{status === "submitting" ? "Sending..." : "Request a Demo"}</span>
       </button>
     </form>
   );
